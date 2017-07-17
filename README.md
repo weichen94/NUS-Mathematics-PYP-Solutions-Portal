@@ -15,6 +15,7 @@ _A Summer Project for CP2106: Independent Software Development Project (Orbital)
   
 ## Project Details
 __ A Node.js based Web Application using Expressjs and Remote MongoDB__
+
 _Based on [Drywall: A Website and user system starter](https://github.com/jedireza/drywall/)_
 
 __The Major Dependencies are:__

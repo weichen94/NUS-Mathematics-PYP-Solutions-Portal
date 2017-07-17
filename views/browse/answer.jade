@@ -1,0 +1,39 @@
+extends ../../layouts/default
+
+block head
+  title Viewing #{module_code} in #{_year_sem}
+
+block neck
+  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-7
+      div.page-header
+        h1 #{module_code} in #{_year_sem}
+      ul.list-group
+        each answer, i in data
+          li.list-group-item
+            strong Question #{answer.question_number}
+            hr
+            p #{answer.details}
+            hr
+            p Posted by #{answer.author} at #{answer.date}
+
+    div.col-sm-5
+    if user && user.username
+      div#answer-input
+        div.panel.panel-default#answer-details
+          div.panel-heading Suggest Answer
+          div.panel-body
+            form(method="post", action='/browse/#{module_code}/#{_year_sem}/add')
+              div.form-group
+                label Question Number
+                input.form-control(type="text", name="question_number")
+              div.form-group
+                label Your Answer
+                textarea.form-control(name="details")
+              div.form-group
+                button.btn.btn-primary.btn-signup.pull-right(type='submit') Submit Answer
+        button.pull-right(onclick="answer_toggle()")#answer-details-button
+          i.fa.fa-caret-square-o-up

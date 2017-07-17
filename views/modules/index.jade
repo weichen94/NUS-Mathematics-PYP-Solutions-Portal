@@ -1,0 +1,61 @@
+extends ../../layouts/admin
+
+block head
+  title Module List for Admins
+
+block neck
+  link(rel='stylesheet', href='/views/modules/index.min.css?#{cacheBreaker}')
+
+block body
+  .container
+    div.page-header
+      h1 All Maths Modules
+    .tab
+      button.tablinks(onclick="openModules(event, 'Level_1000')" id="defaultOpen") Level 1000
+      button.tablinks(onclick="openModules(event, 'Level_2000')") Level 2000
+      button.tablinks(onclick="openModules(event, 'Level_3000')") Level 3000
+      button.tablinks(onclick="openModules(event, 'Level_4000')") Level 4000
+    #Level_1000.tabcontent
+      ul.list-group
+        each module, i in data
+          if module.module_code[2] == "1"
+            li.list-group-item
+              strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
+              hr
+              p #{module.description}
+              hr
+              a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
+              a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
+    #Level_2000.tabcontent
+      ul.list-group
+        each module, i in data
+          if module.module_code[2] == "2"
+            li.list-group-item
+              strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
+              hr
+              p #{module.description}
+              hr
+              a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
+              a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
+    #Level_3000.tabcontent
+      ul.list-group
+        each module, i in data
+          if module.module_code[2] == "3"
+            li.list-group-item
+              strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
+              hr
+              p #{module.description}
+              hr
+              a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
+              a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
+    #Level_4000.tabcontent
+      ul.list-group
+        each module, i in data
+          if module.module_code[2] == "4"
+            li.list-group-item
+              strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
+              hr
+              p #{module.description}
+              hr
+              a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
+              a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete

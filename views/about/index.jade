@@ -1,0 +1,41 @@
+extends ../../layouts/default
+
+block head
+  title About Us
+
+block neck
+  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-6
+      div.page-header
+        h1 About Us
+      div.media
+        a.pull-left(href='#')
+          img.media-object(src='../media/logo-symbol-64x64.png', style='width: 64px; height: 64px;', alt='Lu Lechuan')
+        div.media-body
+          h4.media-heading Lu Lechuan
+          p Majoring in Computer Science, Lu Lechuan is the front-end develop for this web app.
+      div.media.text-right
+        a.pull-right(href='#')
+          img.media-object(src='../media/logo-symbol-64x64.png', style='width: 64px; height: 64px;', alt='Xu Weichen')
+        div.media-body
+          h4.media-heading Xu Weichen
+          p Majoring in Applied Mathematics, Xu Weichen is the back-end developer for this web app.
+      div.media
+        a.pull-left(href='#')
+          img.media-object(src='../media/logo-symbol-64x64.png', style='width: 64px; height: 64px;', alt='Lu Yu')
+        div.media-body
+          h4.media-heading Lu Yu
+          p Majoring in Computer Science, Lu Yu is the current IT director of NUS Mathematics Society.
+    div.col-sm-6.special
+      div.page-header
+        h1 NUS Mathematics Society
+      div
+        img(src='../media/math_soc_logo.jpg')
+        hr
+      p
+        | National University of Singapore (NUS) Mathematics Society was founded back in 1985. In the past few decades, the society has made a remarkable leap in promoting a more gracious mathematical environment in NUS. Aiming to make the students to learn beyond classroom texts, as well as to enrich students' non-academic life.
+      p
+        em * The NUS Mathematics Society is registered with the Registry of Societies of Singapore. It is formed by students of NUS and is a self-governing body. NUS Mathematics Society is not part of the legal entity of NUS. It does not represent NUS and cannot act or make any representation on its behalf. Any views or activities of NUS Mathematics Society are solely those of the society and its members. They do not necessarily represent the position of NUS. The activities and views of NUS Mathematics Society are the sole responsibilities of the society and of its members.

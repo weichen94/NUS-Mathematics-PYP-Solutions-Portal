@@ -1,0 +1,31 @@
+extends ../../layouts/admin
+
+block head
+  title Add Module
+
+block neck
+  link(rel='stylesheet', href='/views/modules/add.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-8
+      div.page-header
+        h1 Add Module
+        form(method="post", action='/modules/add')
+          div.form-group
+            label Module Code
+            input.form-control(type="text", name="module_code")
+          div.form-group
+            label Module Name
+            input.form-control(type="text", name="module_name")
+          div.form-group
+            label Online/Offine
+            select.form-control(name="is_active")
+              option(value=1) Online
+              option(value=0) Offline
+          div.form-group
+            label Description
+            textarea.form-control(name="description")
+          div.form-group
+            button.btn.btn-primary.btn-signup(type='submit') Create Module
+            a.btn.btn-danger.pull-right(href='/modules') Cancel

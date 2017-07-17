@@ -1,0 +1,35 @@
+extends ../../layouts/admin
+
+block head
+  title Edit Module
+
+block neck
+  link(rel='stylesheet', href='/views/modules/edit.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-8
+      div.page-header
+        h1 Edit Module
+        form(method="post", action='/modules/update/#{module._id}')
+          div.form-group
+            label Module Code
+            input.form-control(type="text", name="module_code", value='#{module.module_code}')
+          div.form-group
+            label Module Name
+            input.form-control(type="text", name="module_name", value='#{module.module_name}')
+          div.form-group
+            label Online/Offine
+            select.form-control(name="is_active")
+              if(module.is_active)
+                option(value=1, selected) Online
+                option(value=0) Offline
+              else
+                option(value=1) Online
+                option(value=0, selected) Offline
+          div.form-group
+            label Description
+            textarea.form-control(name="description") #{module.description}
+          div.form-group
+            button.btn.btn-primary.btn-signup(type='submit') Update Module
+            a.btn.btn-danger.pull-right(href='/modules') Cancel

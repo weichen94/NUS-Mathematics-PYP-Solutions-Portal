@@ -1,0 +1,25 @@
+extends ../../layouts/default
+
+block head
+  title Browse #{module_code} by Year
+
+block neck
+  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-6
+      div.page-header
+        h1 Select your Year-Semester
+      ul.list-group
+        each _year_sem, i in year_sem
+          li.list-group-item
+            a(href='/browse/#{module_code}/#{_year_sem}') #{_year_sem}
+
+
+    div.col-sm-6.special
+      div.page-header
+        h1 Past Year Solutions
+      p.lead Excellence comes from endless practices.
+      br
+      i.fa.fa-file-text.super-awesome

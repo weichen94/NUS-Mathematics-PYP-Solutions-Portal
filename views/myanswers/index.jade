@@ -1,0 +1,29 @@
+extends ../../layouts/default
+
+block head
+  title My Answers
+
+block neck
+  link(rel='stylesheet', href='/views/myanswers/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/myanswers/index.min.js?#{cacheBreaker}')
+
+block body
+  .container
+    div.page-header
+      h1 My Answers
+  ul.list-group
+    each answer, i in data
+      li.list-group-item
+        Strong Posted to #{answer.module_code} - #{answer._year_sem} for Question #{answer.question_number}
+        hr
+        p #{answer.details}
+        hr
+        .row
+          .col-md-10
+            Strong Submitted by #{answer.author} on #{answer.date}
+          .col-md-1
+            a(href='/myanswers/edit/#{answer._id}', class='pull-right btn btn-primary') Edit
+          .col-md-1
+            a(data-delete='#{answer._id}', class='btn btn-danger pull-right deleteAnswer_my', href="#") Delete

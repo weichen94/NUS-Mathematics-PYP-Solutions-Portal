@@ -99,14 +99,22 @@ exports.answers = function(req, res, next){
       res.send(results);
     }
     else {
-      var user_id = req.user._id;
-      results.filters = req.query;
-      res.render('browse/answer', {
-        module_code: req.params.module_code,
-        _year_sem: req.params._year_sem,
-        data: results.data,
-        user_id: user_id
-      });
+      if (req.user) {
+        var user_id = req.user._id;
+        results.filters = req.query;
+        res.render('browse/answer', {
+          module_code: req.params.module_code,
+          _year_sem: req.params._year_sem,
+          data: results.data,
+          user_id: user_id
+        });
+      } else {
+        res.render('browse/answer', {
+          module_code: req.params.module_code,
+          _year_sem: req.params._year_sem,
+          data: results.data
+        });
+      }
     }
   });
 };

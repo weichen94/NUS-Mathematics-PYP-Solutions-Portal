@@ -14,10 +14,10 @@ block body
         form(method="post", action='/modules/add')
           div.form-group
             label Module Code
-            input.form-control(type="text", name="module_code")
+            input.form-control(type="text", name="module_code", required = '')
           div.form-group
             label Module Name
-            input.form-control(type="text", name="module_name")
+            input.form-control(type="text", name="module_name", required = '')
           div.form-group
             label Online/Offine
             select.form-control(name="is_active")
@@ -25,10 +25,10 @@ block body
               option(value=0) Offline
           div.form-group
             label Description
-            textarea.form-control(name="description")
+            textarea.form-control(name="description", required = '')
           div.form-group
             label active_semesters
-            input.form-control(type="text", name="active_semesters")
+            input.form-control(type="text", name="active_semesters", required = '')
           div.form-group
             button.btn.btn-primary.btn-signup(type='submit') Create Module
             a.btn.btn-danger.pull-right(href='/modules') Cancel

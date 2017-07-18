@@ -3,8 +3,8 @@ extends ../../layouts/default
 block head
   title Viewing #{module_code} in #{_year_sem}
 
-block neck
-  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+  block neck
+    link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
 
 block body
   div.row
@@ -36,10 +36,10 @@ block body
             form(method="post", action='/browse/#{module_code}/#{_year_sem}/add')
               div.form-group
                 label Question Number
-                input.form-control(type="text", name="question_number")
+                input.form-control(type="text", name="question_number", required = '')
               div.form-group
                 label Your Answer
-                textarea.form-control(name="details")
+                textarea.form-control(name="details", required = '')
               div.form-group
                 button.btn.btn-primary.btn-signup.pull-right(type='submit') Submit Answer
         button.pull-right(onclick="answer_toggle()")#answer-details-button

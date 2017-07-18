@@ -4,7 +4,7 @@ block head
   title Editing Answers
 
 block neck
-  link(rel='stylesheet', href='/views/browse/#{answer.module_code}/#{answer._year_sem}/edit/#{answer._id}.min.css?#{cacheBreaker}')
+  link(rel='stylesheet', href='/views/browse/edit.min.css?#{cacheBreaker}')
 
 block body
   div.row
@@ -14,19 +14,19 @@ block body
       form(method="post", action='/browse/#{answer.module_code}/#{answer._year_sem}/update/#{answer._id}')
         div.form-group
           label Module Code
-          input.form-control(type="text", name="module_code", value='#{answer.module_code}', disabled = '')
+          input.form-control(type="text", name="module_code", value='#{answer.module_code}', readonly = '')
         div.form-group
           label Year & Semester
-          input.form-control(type="text", name="_year_sem", value='#{answer._year_sem}', disabled = '')
+          input.form-control(type="text", name="_year_sem", value='#{answer._year_sem}', readonly = '')
         div.form-group
           label Question Number
           input.form-control(type="text", name="question_number", value='#{answer.question_number}')
         div.form-group
           label Author
-          input.form-control(type="text", name="author", value='#{answer.author}', disabled = '')
+          input.form-control(type="text", name="author", value='#{answer.author}', readonly = '')
         div.form-group
           label Author ObjectId
-          input.form-control(type="text", name="author_id", value='#{answer.author_id}', disabled = '')
+          input.form-control(type="text", name="author_id", value='#{answer.author_id}', readonly = '')
         div.form-group
           label Details
           textarea.form-control(name="details") #{answer.details}

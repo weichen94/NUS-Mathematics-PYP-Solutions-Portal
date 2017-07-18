@@ -20,16 +20,16 @@ block body
           input.form-control(type="text", name="_year_sem", value='#{answer._year_sem}')
         div.form-group
           label Question Number
-          input.form-control(type="text", name="question_number", value='#{answer.question_number}')
+          input.form-control(type="text", name="question_number", value='#{answer.question_number}', required = '')
         div.form-group
           label Author
-          input.form-control(type="text", name="author", value='#{answer.author}')
+          input.form-control(type="text", name="author", value='#{answer.author}', readonly = '')
         div.form-group
           label Author ObjectId
-          input.form-control(type="text", name="author_id", value='#{answer.author_id}')
+          input.form-control(type="text", name="author_id", value='#{answer.author_id}', readonly = '')
         div.form-group
           label Details
-          textarea.form-control(name="details") #{answer.details}
+          textarea.form-control(name="details", required = '') #{answer.details}
         div.form-group
           button.btn.btn-primary.btn-signup(type='submit') Update Answer
           a.btn.btn-danger.pull-right(href='/allanswers') Cancel

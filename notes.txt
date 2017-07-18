@@ -4,11 +4,9 @@ Possible Improvements
   - Questions can be shown
   - ability to insert pictures in answers
 To be done
-  - Not display signup link if logged in
   - SSL security feature
   - Captcha anti-spam for registeration path
   - block unauthenticated users from accessing offline modules directly
-  - have error messages display properly
 
 
 13 July 2017 Log
@@ -32,7 +30,10 @@ Progress Report
   - Captcha anti-spam for contact path
 
 17 July 2017 Log
-Progree Report
+Progress Report
   - Users can now edit answers directly in the browsing url
   - Changed the UI of all answers page to be more mobile friendly
   - added 'active semesters' attribute as an array to modules, admins can set the semesters that are displayed
+  - Prevent user from editing senstive information by setting some fields to 'readonly'
+  - added error display for empty fields in all forms
+  - Not display signup link if logged in

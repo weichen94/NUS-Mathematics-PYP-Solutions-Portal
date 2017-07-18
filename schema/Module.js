@@ -6,7 +6,8 @@ exports = module.exports = function(app, mongoose) {
     module_name: { type: String, required:true},
     module_code: {type: String, required: true},
     is_active: {type: Boolean, required: true, default: true},
-    description: {type: String}
+    description: {type: String},
+    active_semesters: {type: Array, default: []}
   });
   moduleSchema.plugin(require('./plugins/pagedFind'));
   moduleSchema.index({ pivot: 1 });

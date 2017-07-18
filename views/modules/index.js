@@ -13,7 +13,7 @@ exports.find = function(req, res, next){
 
   req.app.db.models.Module.pagedFind({
     filters: filters,
-    keys: 'module_code module_name level description is_active',
+    keys: 'module_code module_name level description is_active active_semesters',
     limit: req.query.limit,
     page: req.query.page,
     sort: req.query.sort
@@ -65,12 +65,15 @@ exports.create = function(req, res, next) {
   });
 
   workflow.on('createModule', function() {
+    var actives_sems = req.body.active_semesters.split(',');
+
     var fieldsToSet = {
       module_code: req.body.module_code,
       module_name: req.body.module_name,
       level: req.body.level,
       description: req.body.description,
-      is_active: req.body.is_active
+      is_active: req.body.is_active,
+      active_semesters: actives_sems
     };
 
     req.app.db.models.Module.create(fieldsToSet, function(err, Module){
@@ -123,12 +126,15 @@ exports.update = function(req, res, next) {
   });
 
   workflow.on('updateModule', function() {
+    var actives_sems = req.body.active_semesters.split(',');
+
     var fieldsToSet = {
       module_code: req.body.module_code,
       module_name: req.body.module_name,
       level: req.body.level,
       description: req.body.description,
-      is_active: req.body.is_active
+      is_active: req.body.is_active,
+      active_semesters: actives_sems
     };
     req.app.db.models.Module.findByIdAndUpdate(req.params.id, fieldsToSet, function(err, module){
       if(err) {

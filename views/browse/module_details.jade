@@ -12,7 +12,7 @@ block body
       div.page-header
         h1 Select your Year-Semester
       ul.list-group
-        each _year_sem, i in year_sem
+        each _year_sem, i in data[0].active_semesters
           li.list-group-item
             a(href='/browse/#{module_code}/#{_year_sem}') #{_year_sem}
 

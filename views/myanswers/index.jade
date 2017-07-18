@@ -19,11 +19,7 @@ block body
         Strong Posted to #{answer.module_code} - #{answer._year_sem} for Question #{answer.question_number}
         hr
         p #{answer.details}
+        Strong Submitted by #{answer.author} on #{answer.date}
         hr
-        .row
-          .col-md-10
-            Strong Submitted by #{answer.author} on #{answer.date}
-          .col-md-1
-            a(href='/myanswers/edit/#{answer._id}', class='pull-right btn btn-primary') Edit
-          .col-md-1
-            a(data-delete='#{answer._id}', class='btn btn-danger pull-right deleteAnswer_my', href="#") Delete
+        a(href='/myanswers/edit/#{answer._id}', class='btn btn-primary') Edit
+        a(data-delete='#{answer._id}', class='btn btn-danger pull-right deleteAnswer_my', href="#") Delete

@@ -24,6 +24,8 @@ block body
               hr
               p #{module.description}
               hr
+              p active_semesters: #{module.active_semesters}
+              hr
               a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
               a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
     #Level_2000.tabcontent
@@ -34,6 +36,8 @@ block body
               strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
               hr
               p #{module.description}
+              hr
+              p active_semesters: #{module.active_semesters}
               hr
               a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
               a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
@@ -46,6 +50,8 @@ block body
               hr
               p #{module.description}
               hr
+              p active_semesters: #{module.active_semesters}
+              hr
               a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
               a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete
     #Level_4000.tabcontent
@@ -56,6 +62,8 @@ block body
               strong #{module.module_code} - #{module.module_name} - Online: #{module.is_active}
               hr
               p #{module.description}
+              hr
+              p active_semesters: #{module.active_semesters}
               hr
               a(href='/modules/edit/#{module._id}', class='btn btn-primary') Edit
               a(id='deleteModule', data-delete='#{module._id}', class='btn btn-danger pull-right deleteModule', href="#") Delete

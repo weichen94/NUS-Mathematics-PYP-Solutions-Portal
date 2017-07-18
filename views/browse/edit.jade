@@ -4,32 +4,32 @@ block head
   title Editing Answers
 
 block neck
-  link(rel='stylesheet', href='/views/myanswers/edit.min.css?#{cacheBreaker}')
+  link(rel='stylesheet', href='/views/browse/#{answer.module_code}/#{answer._year_sem}/edit/#{answer._id}.min.css?#{cacheBreaker}')
 
 block body
   div.row
     div.col-sm-8
       div.page-header
         h1 Editing Answer for #{answer.module_code} - #{answer._year_sem} by #{answer.author}
-      form(method="post", action='/myanswers/update/#{answer._id}')
+      form(method="post", action='/browse/#{answer.module_code}/#{answer._year_sem}/update/#{answer._id}')
         div.form-group
           label Module Code
-          input.form-control(type="text", name="module_code", value='#{answer.module_code}')
+          input.form-control(type="text", name="module_code", value='#{answer.module_code}', disabled = '')
         div.form-group
           label Year & Semester
-          input.form-control(type="text", name="_year_sem", value='#{answer._year_sem}')
+          input.form-control(type="text", name="_year_sem", value='#{answer._year_sem}', disabled = '')
         div.form-group
           label Question Number
           input.form-control(type="text", name="question_number", value='#{answer.question_number}')
         div.form-group
           label Author
-          input.form-control(type="text", name="author", value='#{answer.author}')
+          input.form-control(type="text", name="author", value='#{answer.author}', disabled = '')
         div.form-group
           label Author ObjectId
-          input.form-control(type="text", name="author_id", value='#{answer.author_id}')
+          input.form-control(type="text", name="author_id", value='#{answer.author_id}', disabled = '')
         div.form-group
           label Details
           textarea.form-control(name="details") #{answer.details}
         div.form-group
           button.btn.btn-primary.btn-signup(type='submit') Update Answer
-          a.btn.btn-danger.pull-right(href='/myanswers/') Cancel
+          a.btn.btn-danger.pull-right(href='/browse/#{answer.module_code}/#{answer._year_sem}/') Cancel

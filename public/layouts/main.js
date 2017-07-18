@@ -30,6 +30,27 @@ $(".deleteAnswer_my").on('click', function(e){
     window.location = '/myanswers/';
 });
 
+$(".deleteAnswer_browse").on('click', function(e){
+    e.preventDefault();
+    var deleteId = $(this).data('delete')[0];
+    var module_code = $(this).data('delete')[1];
+    var _year_sem = $(this).data('delete')[2];
+    console.log(deleteId);
+    console.log(module_code);
+    console.log(_year_sem);
+    $.ajax({
+        url: '/browse/'+ module_code + '/' + _year_sem + '/delete/' + deleteId,
+        type: 'delete',
+        success: function(result){
+            console.log(result);
+        },
+        error: function(error){
+          console.log(error);
+        }
+    });
+    window.location = '/browse/'+ module_code + '/' + _year_sem + '/';
+});
+
 $(".deleteModule").on('click', function(e){
     e.preventDefault();
     var deleteId = $(this).data('delete'); // here use this instead of  using id #deleteModule

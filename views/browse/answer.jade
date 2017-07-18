@@ -19,6 +19,13 @@ block body
             p #{answer.details}
             hr
             p Posted by #{answer.author} at #{answer.date}
+            if answer.author_id == user_id
+              hr
+              a(href='/browse/#{answer.module_code}/#{answer._year_sem}/edit/#{answer._id}', class='btn btn-primary') Edit
+              a(data-delete=['#{answer._id}', '#{module_code}', '#{_year_sem}'], class='btn btn-danger pull-right deleteAnswer_browse', href="#") Delete
+
+
+
 
     div.col-sm-5
     if user && user.username

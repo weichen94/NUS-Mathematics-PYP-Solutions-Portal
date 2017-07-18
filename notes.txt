@@ -1,12 +1,20 @@
-*notes
+*Change Log
+
+Possible Improvements
+  - Questions can be shown
+  - ability to insert pictures in answers
+To be done
+  - Not display signup link if logged in
+  - SSL security feature
+  - Captcha anti-spam for registeration path
+  - block unauthenticated users from accessing offline modules directly
+  - have error messages display properly
+
 
 13 July 2017 Log
-Possible Improvements:
-  - divide modules into levels
-  - Suggest Answer box can be minimized
-  - Questions can be shown
-  - modules can be online or offline
-  - ability to insert pictures in answers
+Progress Report
+  - Implemented CRUD functions for answers, modules
+
 
 14 July 2017 Log
 Progress Report
@@ -14,21 +22,17 @@ Progress Report
   - Suggest Answer box can be minimized
   - modules can be online or offline
   - block unauthenticated users from accessing links directly
-Possible Improvements
-  - Questions can be shown
-  - ability to insert pictures in answers
 
-15 July 2017 log
+
+15 July 2017 Log
 Progress Report
   - Update function for admin misses Module info (fixed)
   - myAnswers route, RUD functions
   - Mathjax render
   - Captcha anti-spam for contact path
-To be done
-  - Not display signup link if logged in
-  - SSL security feature
-  - Captcha anti-spam for registeration path
-  - block unauthenticated users from accessing offline modules directly
-Possible Improvements
-  - Questions can be shown
-  - ability to insert pictures in answers
+
+17 July 2017 Log
+Progree Report
+  - Users can now edit answers directly in the browsing url
+  - Changed the UI of all answers page to be more mobile friendly
+  - added 'active semesters' attribute as an array to modules, admins can set the semesters that are displayed

@@ -11,7 +11,7 @@ exports.find = function(req, res, next){
 
   req.app.db.models.Answer.pagedFind({
     filters: filters,
-    keys: 'module_code _year_sem author author_id question_number details date',
+    keys: 'module_code _year_sem author author_id question_number details mainimage date',
     limit: req.query.limit,
     page: req.query.page,
     sort: {
@@ -94,11 +94,19 @@ exports.update = function(req, res, next) {
     workflow.emit('validate');
 };
 
-exports.delete = function(req, res){
-  console.log(req.params.id);
+exports.delete = function(req, res, next){
   var workflow = req.app.utility.workflow(req, res);
 
   workflow.on('validate', function() {
+    if(req.params.imageid != "noimage") {
+      var filepath = './public/images/' + req.params.imageid;
+      req.app.fs.unlink(filepath, function(err) {
+        if(err){
+          return workflow.emit('exception', err);
+        }
+      });
+    }
+
     workflow.emit('deleteAnswer_my');
   });
 
@@ -108,6 +116,7 @@ exports.delete = function(req, res){
         return workflow.emit('exception', err);
       }
         req.flash('success', 'Answer Deleted!');
+        res.location('/myanswers/');
         res.redirect('/myanswers/');
     });
   });

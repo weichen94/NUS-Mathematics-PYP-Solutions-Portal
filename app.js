@@ -58,6 +58,10 @@ app.use(passport.session());
 //app.use(csrf({ cookie: { signed: true } }));
 helmet(app);
 
+//file system management
+app.file = require('file-system');
+app.fs = require('fs');
+
 // connect-flash and express-messages
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
@@ -93,7 +97,6 @@ app.locals.projectName = app.config.projectName;
 app.locals.copyrightYear = new Date().getFullYear();
 app.locals.copyrightName = app.config.companyName;
 app.locals.cacheBreaker = 'br34k-01';
-app.locals.year_sem = [ "AY0910_Sem1","AY0910_Sem2","AY1011_Sem1","AY1011_Sem2","AY1112_Sem1","AY1112_Sem2","AY1213_Sem1","AY1213_Sem2","AY1314_Sem1","AY1314_Sem2","AY1415_Sem1","AY1415_Sem2","AY1516_Sem1","AY1516_Sem2","AY1617_Sem1","AY1617_Sem2","AY1718_Sem1","AY1718_Sem2"];
 
 //setup passport
 require('./passport')(app, passport);

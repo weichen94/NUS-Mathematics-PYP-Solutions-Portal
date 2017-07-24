@@ -31,5 +31,11 @@ block body
           label Details
           textarea.form-control(name="details", required = '') #{answer.details}
         div.form-group
+          label Image
+          if answer.mainimage && answer.mainimage != 'noimage'
+            img(src='/images/#{answer.mainimage}')
+          else
+            p No Image was uploaded
+        div.form-group
           button.btn.btn-primary.btn-signup(type='submit') Update Answer
           a.btn.btn-danger.pull-right(href='/myanswers/') Cancel

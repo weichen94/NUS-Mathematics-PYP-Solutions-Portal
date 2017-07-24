@@ -1,8 +1,9 @@
 $(".deleteAnswer_all").on('click', function(e){
     e.preventDefault();
-    var deleteId = $(this).data('delete');
+    var deleteId = $(this).data('delete')[0];
+    var imageid = $(this).data('delete')[1];
     $.ajax({
-        url: '/allanswers/delete/'+ deleteId,
+        url: '/allanswers/delete/'+ deleteId + '/' + imageid,
         type: 'delete',
         success: function(result){
             console.log(result);
@@ -16,9 +17,10 @@ $(".deleteAnswer_all").on('click', function(e){
 
 $(".deleteAnswer_my").on('click', function(e){
     e.preventDefault();
-    var deleteId = $(this).data('delete');
+    var deleteId = $(this).data('delete')[0];
+    var imageid = $(this).data('delete')[1];
     $.ajax({
-        url: '/myanswers/delete/'+ deleteId,
+        url: '/myanswers/delete/'+ deleteId + '/' + imageid,
         type: 'delete',
         success: function(result){
             console.log(result);
@@ -35,11 +37,9 @@ $(".deleteAnswer_browse").on('click', function(e){
     var deleteId = $(this).data('delete')[0];
     var module_code = $(this).data('delete')[1];
     var _year_sem = $(this).data('delete')[2];
-    console.log(deleteId);
-    console.log(module_code);
-    console.log(_year_sem);
+    var imageid = $(this).data('delete')[3];
     $.ajax({
-        url: '/browse/'+ module_code + '/' + _year_sem + '/delete/' + deleteId,
+        url: '/browse/'+ module_code + '/' + _year_sem + '/delete/' + deleteId + '/' + imageid,
         type: 'delete',
         success: function(result){
             console.log(result);

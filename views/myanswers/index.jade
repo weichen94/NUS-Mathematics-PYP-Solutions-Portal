@@ -4,10 +4,7 @@ block head
   title My Answers
 
 block neck
-  link(rel='stylesheet', href='/views/myanswers/index.min.css?#{cacheBreaker}')
-
-block feet
-  script(src='/views/myanswers/index.min.js?#{cacheBreaker}')
+  link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
 
 block body
   .container
@@ -19,7 +16,9 @@ block body
         Strong Posted to #{answer.module_code} - #{answer._year_sem} for Question #{answer.question_number}
         hr
         p #{answer.details}
+        if answer.mainimage != 'noimage'
+          img(src='/images/#{answer.mainimage}')
         Strong Submitted by #{answer.author} on #{answer.date}
         hr
         a(href='/myanswers/edit/#{answer._id}', class='btn btn-primary') Edit
-        a(data-delete='#{answer._id}', class='btn btn-danger pull-right deleteAnswer_my', href="#") Delete
+        a(data-delete=['#{answer._id}','#{answer.mainimage}'], class='btn btn-danger pull-right deleteAnswer_my', href="#") Delete

@@ -17,6 +17,8 @@ block body
           em #{answer.date}
         hr
         p #{answer.details}
+        if answer.mainimage && answer.mainimage != 'noimage'
+          img(src='/images/#{answer.mainimage}')
         hr
         .row
           .col-md-10
@@ -24,4 +26,4 @@ block body
           .col-md-1
             a(href='/allanswers/edit/#{answer._id}', class='pull-right btn btn-primary') Edit
           .col-md-1
-            a(data-delete='#{answer._id}', class='btn btn-danger pull-right deleteAnswer_all', href="#") Delete
+            a(data-delete=['#{answer._id}','#{answer.mainimage}'], class='btn btn-danger pull-right deleteAnswer_all', href="#") Delete

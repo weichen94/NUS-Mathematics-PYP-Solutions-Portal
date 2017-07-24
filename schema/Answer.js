@@ -9,6 +9,7 @@ exports = module.exports = function(app, mongoose) {
     author_id: {type: String, required: true},
     question_number: {type: String, required: true},
     details: {type: String, require: true},
+    mainimage: {type: String},
     date: {type: Date, default: Date.now}
   });
   answerSchema.plugin(require('./plugins/pagedFind'));

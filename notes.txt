@@ -2,7 +2,6 @@
 
 Possible Improvements
   - Questions can be shown
-  - ability to insert pictures in answers
 To be done
   - SSL security feature
   - Captcha anti-spam for registeration path
@@ -29,11 +28,17 @@ Progress Report
   - Mathjax render
   - Captcha anti-spam for contact path
 
-17 July 2017 Log
+18 July 2017 Log
 Progress Report
   - Users can now edit answers directly in the browsing url
   - Changed the UI of all answers page to be more mobile friendly
   - added 'active semesters' attribute as an array to modules, admins can set the semesters that are displayed
-  - Prevent user from editing senstive information by setting some fields to 'readonly'
+  - Prevent user from editing sensitive information by setting some fields to 'readonly'
   - added error display for empty fields in all forms
   - Not display signup link if logged in
+  
+22 July 2017 Log
+Progress Report
+  - Ability to insert pictures into answers for users
+  - CRUD functionality for picture files across the portal
+  - general code optimization

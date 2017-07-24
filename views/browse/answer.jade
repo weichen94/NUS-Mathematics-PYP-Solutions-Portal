@@ -17,12 +17,14 @@ block body
             strong Question #{answer.question_number}
             hr
             p #{answer.details}
+            if answer.mainimage != 'noimage'
+              img(src='/images/#{answer.mainimage}')
             hr
             p Posted by #{answer.author} at #{answer.date}
             if answer.author_id == user_id
               hr
               a(href='/browse/#{answer.module_code}/#{answer._year_sem}/edit/#{answer._id}', class='btn btn-primary') Edit
-              a(data-delete=['#{answer._id}', '#{module_code}', '#{_year_sem}'], class='btn btn-danger pull-right deleteAnswer_browse', href="#") Delete
+              a(data-delete=['#{answer._id}', '#{module_code}', '#{_year_sem}', '#{answer.mainimage}'], class='btn btn-danger pull-right deleteAnswer_browse', href="#") Delete
 
 
 
@@ -33,13 +35,16 @@ block body
         div.panel.panel-default#answer-details
           div.panel-heading Suggest Answer
           div.panel-body
-            form(method="post", action='/browse/#{module_code}/#{_year_sem}/add')
+            form(method="post", action='/browse/#{module_code}/#{_year_sem}/add', enctype="multipart/form-data")
               div.form-group
                 label Question Number
                 input.form-control(type="text", name="question_number", required = '')
               div.form-group
                 label Your Answer
                 textarea.form-control(name="details", required = '')
+              div.form-group
+                label Image(Optional)
+                input.form-control(name='mainimage', type='file', accept="application/x-zip-compressed,image/*")
               div.form-group
                 button.btn.btn-primary.btn-signup.pull-right(type='submit') Submit Answer
         button.pull-right(onclick="answer_toggle()")#answer-details-button

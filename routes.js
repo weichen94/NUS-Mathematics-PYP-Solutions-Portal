@@ -40,20 +40,20 @@ exports = module.exports = function(app, passport) {
   app.get('/browse/', require('./views/browse/index').find);
   app.get('/browse/:module_code/', require('./views/browse/index').init);
   app.get('/browse/:module_code/:_year_sem/', require('./views/browse/index').answers);
-  app.post('/browse/:module_code/:_year_sem/', require('./views/browse/index').create);
+  app.post('/browse/:module_code/:_year_sem/add', app.config.upload.single('mainimage'), require('./views/browse/index').create);
 
   //Browsing route edit
   app.all('/browse/:module_code/:_year_sem/edit*', ensureAuthenticated);
   app.get('/browse/:module_code/:_year_sem/edit/:id', require('./views/browse/index').answer_edit);
   app.post('/browse/:module_code/:_year_sem/update/:id', require('./views/browse/index').answer_update);
-  app.delete('/browse/:module_code/:_year_sem/delete/:id', require('./views/browse/index').answer_delete);
+  app.delete('/browse/:module_code/:_year_sem/delete/:id/:imageid', require('./views/browse/index').answer_delete);
 
   // My Answers routes & check
   app.all('/myanswers*', ensureAuthenticated);
   app.get('/myanswers/', require('./views/myanswers/index').find);
   app.get('/myanswers/edit/:id', require('./views/myanswers/index').edit);
   app.post('/myanswers/update/:id', require('./views/myanswers/index').update);
-  app.delete('/myanswers/delete/:id', require('./views/myanswers/index').delete);
+  app.delete('/myanswers/delete/:id/:imageid', require('./views/myanswers/index').delete);
 
 
   // Admin Routes Check for all answers & module management
@@ -66,7 +66,7 @@ exports = module.exports = function(app, passport) {
   app.get('/allanswers/', require('./views/allanswers/index').find);
   app.get('/allanswers/edit/:id', require('./views/allanswers/index').edit);
   app.post('/allanswers/update/:id', require('./views/allanswers/index').update);
-  app.delete('/allanswers/delete/:id', require('./views/allanswers/index').delete);
+  app.delete('/allanswers/delete/:id/:imageid', require('./views/allanswers/index').delete);
 
   // Modules routes
   app.get('/modules/', require('./views/modules/index').find);

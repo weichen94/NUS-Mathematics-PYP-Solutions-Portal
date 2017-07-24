@@ -84,7 +84,7 @@ exports.answers = function(req, res, next){
 
   req.app.db.models.Answer.pagedFind({
     filters: filters,
-    keys: 'author author_id question_number details date',
+    keys: 'module_code _year_sem author author_id question_number details mainimage date',
     limit: req.query.limit,
     page: req.query.page,
     sort: req.query.sort
@@ -137,13 +137,21 @@ exports.create = function(req, res, next) {
   });
 
   workflow.on('createAnswer', function() {
+    var mainimage;
+    if(req.file){
+      mainimage = req.file.filename;
+    } else {
+      mainimage = "noimage";
+    }
+
     var fieldsToSet = {
       module_code: req.params.module_code,
       _year_sem: req.params._year_sem,
       author: req.user.username,
       author_id: req.user._id,
       question_number: req.body.question_number,
-      details: req.body.details
+      details: req.body.details,
+      mainimage: mainimage
     };
 
     req.app.db.models.Answer.create(fieldsToSet, function(err, answer){
@@ -203,7 +211,6 @@ exports.answer_update = function(req, res, next) {
       details: req.body.details
     };
 
-    console.log(fieldsToSet);
     req.app.db.models.Answer.findByIdAndUpdate(req.params.id, fieldsToSet, function(err, answer){
       if(err) {
         return workflow.emit('exception', err);
@@ -218,20 +225,29 @@ exports.answer_update = function(req, res, next) {
     workflow.emit('validate');
 };
 
-exports.answer_delete = function(req, res){
-  console.log(req.params.id);
+exports.answer_delete = function(req, res, next){
   var workflow = req.app.utility.workflow(req, res);
 
   workflow.on('validate', function() {
-    workflow.emit('deleteAnswer_my');
+    if(req.params.imageid != "noimage") {
+      var filepath = './public/images/' + req.params.imageid;
+      req.app.fs.unlink(filepath, function(err) {
+        if(err){
+          return workflow.emit('exception', err);
+        }
+
+        workflow.emit('deleteAnswer_browse');
+      });
+    }
   });
 
-  workflow.on('deleteAnswer_my', function(){
+  workflow.on('deleteAnswer_browse', function(){
     req.app.db.models.Answer.findByIdAndRemove(req.params.id, function(err){
       if(err){
         return workflow.emit('exception', err);
       }
         req.flash('success', 'Answer Deleted!');
+        res.location('/myanswers/');
         res.redirect('/myanswers/');
     });
   });

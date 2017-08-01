@@ -14,7 +14,7 @@ _A Summer Project for CP2106: Independent Software Development Project (Orbital)
   * __July 2017__: Obtain and Customize the Drywall Framework, implementation of Maths PYP related features
   
 ## Project Details
-__ A Node.js based Web Application using Expressjs and Remote MongoDB__
+__A Node.js based Web Application using Expressjs and Remote MongoDB__
 
 _Based on [Drywall: A Website and user system starter](https://github.com/jedireza/drywall/)_
 
